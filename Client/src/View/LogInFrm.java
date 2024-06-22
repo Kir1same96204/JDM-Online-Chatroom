@@ -49,7 +49,7 @@ public class LogInFrm extends JFrame{
         constraints.gridwidth = 3;
         layout.setConstraints(id, constraints);
 
-        JLabel pwdLabel = new JLabel("密码：");
+        JLabel pwdLabel = new JLabel("密 码：");
         constraints.gridx = 0;
         constraints.gridy = 3;
         constraints.gridheight = constraints.gridwidth = 1;

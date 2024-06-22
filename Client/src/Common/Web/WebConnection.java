@@ -4,6 +4,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
 
+/**
+ * @Description
+ * A basic class to handle Object transmission between Server and Client. 
+ * All communication between Server and Client should go through this class.
+ */
 public class WebConnection {
     private String IP = "127.0.0.1";
     private int port = 6666;

@@ -1,6 +1,6 @@
 package Common.Web.Package;
 
-public class SignupRequest {
+public class SignupRequest extends WebPackage{
     public String id;
     public String password;
 
