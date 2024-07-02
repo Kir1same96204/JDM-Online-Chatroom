@@ -35,7 +35,7 @@ public class LogInFrm extends JFrame{
         constraints.insets = new Insets(10,10,20,10);
         layout.setConstraints(title, constraints);
 
-        JLabel idLabel = new JLabel("用户名：");
+        JLabel idLabel = new JLabel("用户名：", SwingConstants.RIGHT);
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridheight = constraints.gridwidth = 1;
@@ -49,7 +49,7 @@ public class LogInFrm extends JFrame{
         constraints.gridwidth = 3;
         layout.setConstraints(id, constraints);
 
-        JLabel pwdLabel = new JLabel("密 码：");
+        JLabel pwdLabel = new JLabel("密  码：", SwingConstants.RIGHT);
         constraints.gridx = 0;
         constraints.gridy = 3;
         constraints.gridheight = constraints.gridwidth = 1;
@@ -76,6 +76,7 @@ public class LogInFrm extends JFrame{
                     connection = new WebConnection();
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "无法与服务器建立连接！");
+                    connection = null;
                     return;
                 }
 
