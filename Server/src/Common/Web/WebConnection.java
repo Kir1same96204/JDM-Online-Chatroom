@@ -4,6 +4,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.*;
 
+import Common.Web.Package.WebPackage;
+
 /**
  * @Description
  * A basic class to handle Object transmission between Server and Client. 
@@ -39,8 +41,8 @@ public class WebConnection {
         oos.writeObject(obj);
     }
 
-    public Object receive() throws IOException, ClassNotFoundException{
+    public WebPackage receive() throws IOException, ClassNotFoundException{
         ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-        return ois.readObject();
+        return (WebPackage)ois.readObject();
     }
 }

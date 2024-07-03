@@ -32,7 +32,7 @@ public class App {
         }
     }
 
-    void mainLoop() throws Exception{
+    void mainLoop() throws Exception {
         // main loop to monitor port, start new thread to handle new connection 
         
         while (true){

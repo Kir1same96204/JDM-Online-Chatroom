@@ -85,7 +85,7 @@ public class LogInFrm extends JFrame{
                     LoginResult result = (LoginResult)connection.receive();
 
                     if (result.success){
-                        MainFrm mainFrm = new MainFrm(result.user, connection);
+                        MainFrm mainFrm = new MainFrm(result.user, connection, result.chatroom_info);
                         LogInFrm.this.dispose();
                         mainFrm.setVisible(true);
                         return;
@@ -131,7 +131,7 @@ public class LogInFrm extends JFrame{
                     SignupResult result = (SignupResult)connection.receive();
 
                     if (result.success){
-                        MainFrm mainFrm = new MainFrm(result.user, connection);
+                        MainFrm mainFrm = new MainFrm(result.user, connection, result.chatroom_info);
                         LogInFrm.this.dispose();
                         mainFrm.setVisible(true);
                         return;
@@ -178,10 +178,4 @@ public class LogInFrm extends JFrame{
         this.add(loginBtn);
         this.add(signupBtn);
     }   
-
-
-    public static void main(String[] args){
-        LogInFrm frame = new LogInFrm();
-        frame.setVisible(true);
-    }
 }
