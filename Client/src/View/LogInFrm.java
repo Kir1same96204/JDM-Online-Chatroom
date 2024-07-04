@@ -24,6 +24,7 @@ public class LogInFrm extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 500, 500, 400);
         setResizable(false);
+        setLocationRelativeTo(null);
 
         JLabel title = new JLabel("JDM在线聊天室", new ImageIcon("image/jdm.png"), SwingConstants.LEADING);
         title.setFont(new Font("微软雅黑", Font.BOLD, 40));

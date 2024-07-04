@@ -21,12 +21,6 @@ public class LobbyWebHandlerThread extends Thread {
     public void run() {
         while (true) {
             WebPackage webPackage = null;
-            try {
-                webPackage = connection.receive();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
-            }
 
             if (webPackage instanceof EnterChatRoomResult) {
                 mainFrm.dispose();
@@ -36,7 +30,7 @@ public class LobbyWebHandlerThread extends Thread {
                 return;
             }
 
-            if (webPackage instanceof ChatRoomInfoUpdate) {
+            else if (webPackage instanceof ChatRoomInfoUpdate) {
                 ChatRoomInfoUpdate update = (ChatRoomInfoUpdate)webPackage;
                 
                 switch (update.type) {

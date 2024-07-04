@@ -30,6 +30,7 @@ public class MainFrm extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 500, 1000, 800);
         setResizable(false);
+        setLocationRelativeTo(null);
 
         container = getContentPane();
         setLayout(new BorderLayout());
@@ -48,7 +49,7 @@ public class MainFrm extends JFrame{
         container.add(chatRoomDisplayPanel, BorderLayout.CENTER);
 
         //----------------------------------
-        
+        webHandler.start();
     }
 
     public void createChatroom() {

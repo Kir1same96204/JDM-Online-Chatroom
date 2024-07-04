@@ -15,6 +15,9 @@ public class WebConnection {
     private String IP = "127.0.0.1";
     private int port = 6666;
     private Socket socket;
+    ObjectOutputStream oos;
+    ObjectInputStream ois;
+
 
     public WebConnection() throws IOException{
         socket = new Socket(InetAddress.getByName(IP), port);
@@ -22,6 +25,12 @@ public class WebConnection {
 
     public WebConnection(Socket socket) {
         this.socket = socket;
+        try {
+            oos = new ObjectOutputStream(socket.getOutputStream());
+            ois = new ObjectInputStream(socket.getInputStream());
+        } catch (Exception e) {
+            
+        }
     }
 
     public Socket getSocket(){
@@ -37,12 +46,10 @@ public class WebConnection {
     }
 
     public void send(Object obj) throws IOException{
-        ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
         oos.writeObject(obj);
     }
 
     public WebPackage receive() throws IOException, ClassNotFoundException{
-        ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
         return (WebPackage)ois.readObject();
     }
 }
