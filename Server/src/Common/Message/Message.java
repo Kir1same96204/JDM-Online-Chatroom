@@ -16,4 +16,3 @@ public class Message extends WebPackage{
         this.sender = sender;
     }
 }
- 

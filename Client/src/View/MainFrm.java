@@ -11,20 +11,13 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Common.*;
-import Common.*;
 import Common.Web.*;
-import View.Utils.RoundBorder;
-import WebHandler.LobbyWebHandlerThread;
 import View.Utils.RoundBorder;
 import WebHandler.LobbyWebHandlerThread;
 
 public class MainFrm extends JFrame{
     final static String ADD_CARD_NAME = "add";
-    @SuppressWarnings("unused")
-    final static String ADD_CARD_NAME = "add";
-    @SuppressWarnings("unused")
     private User user = null;
-    LobbyWebHandlerThread webHandler;
     LobbyWebHandlerThread webHandler;
     private Container container;
     ChatRoomDisplayPanel chatRoomDisplayPanel;
@@ -32,7 +25,6 @@ public class MainFrm extends JFrame{
     final String bgImgPath = "image/chatroombg.jpg";
     private ImageIcon backgroundImage = new ImageIcon(bgImgPath);  
     
-    public MainFrm(User user, WebConnection connection, HashSet<ChatroomInfo> chatroom_info){
     public MainFrm(User user, WebConnection connection, HashSet<ChatroomInfo> chatroom_info){
         super("大厅");
         this.user = user;
@@ -48,32 +40,6 @@ public class MainFrm extends JFrame{
         setLocationRelativeTo(null);
 
         Container container = getContentPane();
-
-        // Container container = new JPanel();
-        // Container layerPane = new JLayeredPane();
-        // getContentPane().add(layerPane);
-        // layerPane.add(new JPanel() {
-        //     {
-        //         // setOpaque(true);
-        //         setLayout(new BorderLayout());
-        //         System.out.println("bgp created");
-        //     }
-
-        //     @Override  
-        //     protected void paintComponent(Graphics g) {  
-        //         super.paintComponent(g); // 调用父类的paintComponent方法  
-        //         // 绘制背景图片  
-        //         if (backgroundImage != null) {  
-        //             // System.out.println("bg ok");
-        //             g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);  
-        //         }  else{
-        //             System.err.println("no bg");
-        //         }
-        //     }  
-        // }, new Integer(0));
-        // layerPane.add(container, new Integer(1));
-        // setContentPane(container);
-
 
         // title
         JLabel titleLabel = new JLabel("当前聊天室", SwingConstants.CENTER);
@@ -119,9 +85,7 @@ public class MainFrm extends JFrame{
 
 class ChatRoomDisplayPanel extends JPanel{
     private final static int MAX_CARD_NUM = 15;
-    private final static int MAX_CARD_NUM = 15;
 
-    ArrayList<String> chatroom_names = new ArrayList<String>();
     ArrayList<String> chatroom_names = new ArrayList<String>();
     HashMap<String, Card> cards = new HashMap<String, Card>();
     HashSet<Card> all_cards = new HashSet<Card>();
