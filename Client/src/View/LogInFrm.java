@@ -1,13 +1,12 @@
 package View;
-import javax.swing.*;
-
+import Common.ChatroomInfo;
 import Common.Web.*;
 import Common.Web.Package.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.*;
 
 public class LogInFrm extends JFrame{
     // private static WebUtil webUtil= new WebUtil();
@@ -24,6 +23,7 @@ public class LogInFrm extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 500, 500, 400);
         setResizable(false);
+        setLocationRelativeTo(null);
 
         JLabel title = new JLabel("JDM在线聊天室", new ImageIcon("image/jdm.png"), SwingConstants.LEADING);
         title.setFont(new Font("微软雅黑", Font.BOLD, 40));
@@ -35,7 +35,7 @@ public class LogInFrm extends JFrame{
         constraints.insets = new Insets(10,10,20,10);
         layout.setConstraints(title, constraints);
 
-        JLabel idLabel = new JLabel("用户名：");
+        JLabel idLabel = new JLabel("用户名：", SwingConstants.RIGHT);
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridheight = constraints.gridwidth = 1;
@@ -49,7 +49,7 @@ public class LogInFrm extends JFrame{
         constraints.gridwidth = 3;
         layout.setConstraints(id, constraints);
 
-        JLabel pwdLabel = new JLabel("密 码：");
+        JLabel pwdLabel = new JLabel("密  码：", SwingConstants.RIGHT);
         constraints.gridx = 0;
         constraints.gridy = 3;
         constraints.gridheight = constraints.gridwidth = 1;
@@ -74,17 +74,24 @@ public class LogInFrm extends JFrame{
                 WebConnection connection;
                 try {
                     connection = new WebConnection();
+                    System.out.println("login connection established");
                 } catch (IOException e) {
                     JOptionPane.showMessageDialog(null, "无法与服务器建立连接！");
+                    connection = null;
                     return;
                 }
 
                 try{
+                    System.out.println("sending login request");
                     connection.send(new LoginRequest(id.getText(), new String(pwd.getPassword())));
+                    System.out.println("ok");
                     LoginResult result = (LoginResult)connection.receive();
+                    System.out.println("result recieve");
 
                     if (result.success){
-                        MainFrm mainFrm = new MainFrm(result.user, connection);
+                        System.out.println(result.chatroom_info);
+                        System.out.println(result.chatroom_info.size());
+                        MainFrm mainFrm = new MainFrm(result.user, connection, result.chatroom_info);
                         LogInFrm.this.dispose();
                         mainFrm.setVisible(true);
                         return;
@@ -130,7 +137,7 @@ public class LogInFrm extends JFrame{
                     SignupResult result = (SignupResult)connection.receive();
 
                     if (result.success){
-                        MainFrm mainFrm = new MainFrm(result.user, connection);
+                        MainFrm mainFrm = new MainFrm(result.user, connection, result.chatroom_info);
                         LogInFrm.this.dispose();
                         mainFrm.setVisible(true);
                         return;
@@ -177,10 +184,4 @@ public class LogInFrm extends JFrame{
         this.add(loginBtn);
         this.add(signupBtn);
     }   
-
-
-    public static void main(String[] args){
-        LogInFrm frame = new LogInFrm();
-        frame.setVisible(true);
-    }
 }

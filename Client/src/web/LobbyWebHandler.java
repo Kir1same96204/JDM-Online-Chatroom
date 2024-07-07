@@ -9,8 +9,8 @@ public class LobbyWebHandler{
         if (connection == null){
             connection = new WebConnection();
         }
-
         
+
     }
 
 
