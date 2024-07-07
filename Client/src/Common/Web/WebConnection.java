@@ -47,6 +47,16 @@ public class WebConnection {
         }
     }
 
+    public WebConnection(Socket socket) {
+        this.socket = socket;
+        try {
+            oos = new ObjectOutputStream(socket.getOutputStream());
+            ois = new ObjectInputStream(socket.getInputStream());
+        } catch (Exception e) {
+            
+        }
+    }
+
     public Socket getSocket(){
         return socket;
     }

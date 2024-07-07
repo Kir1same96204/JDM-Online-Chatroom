@@ -11,14 +11,20 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Common.*;
+import Common.*;
 import Common.Web.*;
+import View.Utils.RoundBorder;
+import WebHandler.LobbyWebHandlerThread;
 import View.Utils.RoundBorder;
 import WebHandler.LobbyWebHandlerThread;
 
 public class MainFrm extends JFrame{
     final static String ADD_CARD_NAME = "add";
     @SuppressWarnings("unused")
+    final static String ADD_CARD_NAME = "add";
+    @SuppressWarnings("unused")
     private User user = null;
+    LobbyWebHandlerThread webHandler;
     LobbyWebHandlerThread webHandler;
     private Container container;
     ChatRoomDisplayPanel chatRoomDisplayPanel;
@@ -27,14 +33,18 @@ public class MainFrm extends JFrame{
     private ImageIcon backgroundImage = new ImageIcon(bgImgPath);  
     
     public MainFrm(User user, WebConnection connection, HashSet<ChatroomInfo> chatroom_info){
+    public MainFrm(User user, WebConnection connection, HashSet<ChatroomInfo> chatroom_info){
         super("大厅");
         this.user = user;
+        webHandler = new LobbyWebHandlerThread(this, connection, user);
+        //--------------set View---------
         webHandler = new LobbyWebHandlerThread(this, connection, user);
         //--------------set View---------
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 500, 1000, 800);
         setResizable(false);
+        setLocationRelativeTo(null);
         setLocationRelativeTo(null);
 
         Container container = getContentPane();
@@ -78,6 +88,7 @@ public class MainFrm extends JFrame{
         container.add(BorderLayout.NORTH, titlePanel);
 
         chatRoomDisplayPanel = new ChatRoomDisplayPanel(this, chatroom_info);
+        chatRoomDisplayPanel = new ChatRoomDisplayPanel(this, chatroom_info);
         container.add(chatRoomDisplayPanel, BorderLayout.CENTER);
 
         repaint();
@@ -108,7 +119,9 @@ public class MainFrm extends JFrame{
 
 class ChatRoomDisplayPanel extends JPanel{
     private final static int MAX_CARD_NUM = 15;
+    private final static int MAX_CARD_NUM = 15;
 
+    ArrayList<String> chatroom_names = new ArrayList<String>();
     ArrayList<String> chatroom_names = new ArrayList<String>();
     HashMap<String, Card> cards = new HashMap<String, Card>();
     HashSet<Card> all_cards = new HashSet<Card>();
@@ -188,6 +201,9 @@ class ChatRoomDisplayPanel extends JPanel{
     // void add(String name, )
 }
 
+/**
+ * Default to be transparent
+ */
 /**
  * Default to be transparent
  */

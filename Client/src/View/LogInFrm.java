@@ -1,5 +1,4 @@
 package View;
-import Common.ChatroomInfo;
 import Common.Web.*;
 import Common.Web.Package.*;
 import java.awt.*;
@@ -89,8 +88,8 @@ public class LogInFrm extends JFrame{
                     System.out.println("result recieve");
 
                     if (result.success){
-                        System.out.println(result.chatroom_info);
-                        System.out.println(result.chatroom_info.size());
+                        // System.out.println(result.chatroom_info);
+                        // System.out.println(result.chatroom_info.size());
                         MainFrm mainFrm = new MainFrm(result.user, connection, result.chatroom_info);
                         LogInFrm.this.dispose();
                         mainFrm.setVisible(true);

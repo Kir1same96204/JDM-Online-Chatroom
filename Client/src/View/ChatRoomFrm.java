@@ -10,21 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.lang.model.element.Element;
 import javax.swing.*;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.BoxView;
-import javax.swing.text.ComponentView;
-import javax.swing.text.IconView;
-import javax.swing.text.LabelView;
-import javax.swing.text.ParagraphView;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-import javax.swing.text.StyledEditorKit;
-import javax.swing.text.View;
-import javax.swing.text.ViewFactory;
+import javax.swing.text.*;
 
 import Common.ChatroomInfo;
 import Common.User;
